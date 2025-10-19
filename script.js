@@ -63,3 +63,17 @@ if (slides.length > 0) {
     });
   }
 }
+
+// Dark Mode Toggle
+const toggleBtn = document.getElementById('toggle-darkmode');
+
+// Prüfen, ob ein Modus gespeichert ist
+if (localStorage.getItem('darkMode') === 'true') {
+  document.body.classList.add('dark-mode');
+}
+
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+});
+
