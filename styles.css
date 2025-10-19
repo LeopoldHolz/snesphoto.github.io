@@ -10,8 +10,8 @@ body {
 }
 
 body.dark-mode {
-  background-color: #111;
-  color: white;
+  background-color: #000;
+  color: f0f0f0;
 }
 
 a {
@@ -84,7 +84,7 @@ body.dark-mode header h1 a:hover {
 }
 
 body.dark-mode .slideshow {
-  background-color: #111;
+  background-color: #000;
 }
 
 .slide {
@@ -171,7 +171,7 @@ body:not(.dark-mode) .next { color: black; }
 }
 
 body.dark-mode .thumbnail {
-  border: 2px solid #444;
+  border: 2px solid #222;
 }
 
 /* ==============================
