@@ -4,6 +4,7 @@ const lightboxImg = document.getElementById('lightbox-img');
 const closeBtn = document.getElementById('close');
 
 if (lightbox && lightboxImg && closeBtn) {
+  // Bild anklicken → Lightbox öffnen
   document.querySelectorAll('.thumbnail').forEach(img => {
     img.addEventListener('click', () => {
       lightboxImg.src = img.src;
@@ -11,18 +12,21 @@ if (lightbox && lightboxImg && closeBtn) {
     });
   });
 
+  // "×" klicken → Lightbox schließen
   closeBtn.addEventListener('click', () => {
     lightbox.classList.add('hidden');
+    lightboxImg.src = ''; // Bild entfernen, optional
+  });
+
+  // Klick außerhalb des Bildes → Lightbox schließen
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {  // Nur wenn der Hintergrund geklickt wird
+      lightbox.classList.add('hidden');
+      lightboxImg.src = '';
+    }
   });
 }
 
-// -------- Dark Mode Toggle --------
-const toggleBtn = document.getElementById('toggle-darkmode');
-if (toggleBtn) {
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
-}
 // Slideshow
 let slideIndex = 0;
 const slides = document.querySelectorAll('.slide');
