@@ -375,3 +375,24 @@ body.dark-mode button#toggle-darkmode:hover {
 body.dark-mode header {
   border-bottom: 1px solid #222;
 }
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  max-width: 350px;         /* maximale Breite – du kannst 300–400 anpassen */
+  max-height: 80vh;         /* nie höher als 80% der Bildschirmhöhe */
+  object-fit: contain;      /* Bild bleibt vollständig sichtbar */
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+}
+
+.about-image img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .about-image img {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
