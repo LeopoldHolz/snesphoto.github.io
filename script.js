@@ -67,7 +67,9 @@ if (slides.length > 0) {
 // Dark Mode Toggle
 const toggleBtn = document.getElementById('toggle-darkmode');
 
-// Prüfen, ob ein Modus gespeichert ist
+// ---- Dark Mode merken ----
+const toggleBtn = document.getElementById('toggle-darkmode');
+
 if (localStorage.getItem('darkMode') === 'true') {
   document.body.classList.add('dark-mode');
 }
@@ -76,4 +78,21 @@ toggleBtn.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
   localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
 });
+
+// ---- Navigation beim Scrollen ----
+let lastScrollTop = 0;
+const nav = document.getElementById('main-nav');
+
+window.addEventListener('scroll', () => {
+  let st = window.pageYOffset || document.documentElement.scrollTop;
+  if (st > lastScrollTop && st > 50) {
+    // Scroll nach unten → nav verstecken
+    nav.classList.add('hidden');
+  } else {
+    // Scroll nach oben → nav anzeigen
+    nav.classList.remove('hidden');
+  }
+  lastScrollTop = st <= 0 ? 0 : st; // Mobile Bugfix
+});
+
 
