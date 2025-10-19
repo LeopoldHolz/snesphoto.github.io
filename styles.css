@@ -96,10 +96,13 @@ body.dark-mode {
 
 .slide img {
   max-width: 100%;
-  max-height: 100%;
-  margin: auto;
+  max-height: 100vh;   /* Höhe auf Bildschirmgröße begrenzen */
+  margin: auto;        /* Zentriert horizontale oder vertikale Bilder */
   display: block;
+  object-fit: contain; /* Bild wird komplett angezeigt */
+  background-color: black; /* Optional für Balken bei vertikalen Bildern */
 }
+
 
 
 .slide.active {
