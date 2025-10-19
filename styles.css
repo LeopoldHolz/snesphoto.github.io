@@ -40,7 +40,7 @@ header {
 header h1 a {
   color: inherit;
   text-decoration: none;
-  font-size: 1.3em; /* vorher 1.8em → kleiner */
+  font-size: 1.0em; /* vorher 1.8em → kleiner */
   padding: 3px 8px; /* etwas kompakter */
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
