@@ -115,18 +115,31 @@ body.dark-mode {
   cursor: pointer;
   user-select: none;
   padding: 0 10px;
+  z-index: 10;          /* immer über dem Bild */
   transition: color 0.3s;
 }
 
-/* Default: hell */
-body:not(.dark-mode) .prev,
-body:not(.dark-mode) .next {
-  color: black;
+.prev {
+  left: 10px;           /* links positionieren */
 }
 
-/* Dark Mode */
+.next {
+  right: 10px;          /* rechts positionieren */
+}
+
+/* Farben abhängig vom Dark Mode */
 body.dark-mode .prev,
 body.dark-mode .next {
   color: white;
 }
 
+body:not(.dark-mode) .prev,
+body:not(.dark-mode) .next {
+  color: black;
+}
+
+/* Optional: Hover-Effekt */
+.prev:hover,
+.next:hover {
+  opacity: 0.8;
+}
