@@ -340,3 +340,38 @@ body.dark-mode button#toggle-darkmode:hover {
     font-size: 0.85em;
   }
 }
+/* ==============================
+   DARK MODE HEADER FIX
+============================== */
+
+/* Header-Hintergrund im Darkmode */
+body.dark-mode header {
+  background-color: #000; /* tiefschwarz */
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Links und Titel heller machen */
+body.dark-mode header h1 a,
+body.dark-mode nav a {
+  color: #f0f0f0; /* helles Grau für Text */
+}
+
+body.dark-mode nav a:hover {
+  color: #fff; /* volle Weißhelligkeit beim Hover */
+}
+
+/* Darkmode-Button harmonisch absetzen */
+body.dark-mode button#toggle-darkmode {
+  background-color: #111;
+  color: #f8f8f8;
+  border: 1px solid #333;
+}
+
+body.dark-mode button#toggle-darkmode:hover {
+  background-color: #222;
+}
+
+/* Für mobile Ansicht: dezente Abtrennung unten */
+body.dark-mode header {
+  border-bottom: 1px solid #222;
+}
