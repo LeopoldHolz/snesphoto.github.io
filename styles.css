@@ -112,25 +112,21 @@ body.dark-mode {
   top: 50%;
   transform: translateY(-50%);
   font-size: 3em;
-  color: white;
   cursor: pointer;
   user-select: none;
   padding: 0 10px;
+  transition: color 0.3s;
 }
 
-.prev {
-  left: 10px;
+/* Default: hell */
+body:not(.dark-mode) .prev,
+body:not(.dark-mode) .next {
+  color: black;
 }
 
-.next {
-  right: 10px;
-}
-
-/* Optional: Overlay-Navigation */
-header {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 10;
+/* Dark Mode */
+body.dark-mode .prev,
+body.dark-mode .next {
+  color: white;
 }
 
