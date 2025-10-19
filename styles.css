@@ -10,8 +10,8 @@ body {
 }
 
 body.dark-mode {
-  background-color: #000;
-  color: f0f0f0;
+  background-color: #000; /* tiefschwarz */
+  color: #f0f0f0;
 }
 
 a {
@@ -30,18 +30,22 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 60px;
-  background-color: transparent;
+  padding: 10px 40px;
+  background-color: var(--bg-color, transparent);
   z-index: 50;
   transition: background-color 0.3s;
+  box-sizing: border-box;
 }
 
-/* Home-Button (Titel) */
+header h1 {
+  margin: 0;
+}
+
 header h1 a {
   color: inherit;
   text-decoration: none;
-  font-size: 1.0em; /* vorher 1.8em → kleiner */
-  padding: 3px 8px; /* etwas kompakter */
+  font-size: 1em;
+  padding: 3px 8px;
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -58,14 +62,39 @@ body.dark-mode header h1 a:hover {
 #main-nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   transition: transform 0.3s, opacity 0.3s;
 }
 
-/* verstecken beim Scroll nach unten */
 #main-nav.hidden {
   transform: translateY(-100%);
   opacity: 0;
+}
+
+/* Dark/Light-Mode Button */
+button#toggle-darkmode {
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9em;
+  background-color: #000;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+}
+
+button#toggle-darkmode:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+body.dark-mode button#toggle-darkmode {
+  background-color: #ddd;
+  color: #000;
+}
+
+body.dark-mode button#toggle-darkmode:hover {
+  background-color: #bbb;
 }
 
 /* ==============================
@@ -79,7 +108,7 @@ body.dark-mode header h1 a:hover {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: white; /* Lightmode */
+  background-color: white;
   transition: background-color 0.3s;
 }
 
@@ -88,7 +117,7 @@ body.dark-mode .slideshow {
 }
 
 .slide {
-   position: relative;
+  position: relative;
   display: none;
   width: 100%;
   height: 100%;
@@ -136,25 +165,23 @@ body.dark-mode .slide-caption {
 }
 
 .prev:hover, .next:hover { opacity: 1; }
-
 .prev { left: 10px; }
 .next { right: 10px; }
 
 body.dark-mode .prev,
 body.dark-mode .next { color: white; }
-
 body:not(.dark-mode) .prev,
 body:not(.dark-mode) .next { color: black; }
 
 /* ==============================
-   Galerie
+   Galerie / Thumbnails
 ============================== */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 15px;
   padding: 20px;
-  margin-top: 100px; /* Platz für fixierten Header */
+  margin-top: 100px;
 }
 
 .thumbnail {
@@ -215,112 +242,53 @@ body.dark-mode .thumbnail {
 ============================== */
 main {
   padding: 20px;
-  margin-top: 80px; /* Platz für fixierten Header */
+  margin-top: 80px;
 }
 
 section h2 {
   margin-top: 0;
 }
 
-/* ==============================
-   Buttons / Dark Mode
-============================== */
-button#toggle-darkmode {
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-button#toggle-darkmode:hover {
-  background-color: #ddd;
-}
-
-body.dark-mode button#toggle-darkmode:hover {
-  background-color: #333;
-  color: white;
-}
-/* ==============================
-   HEADER & NAV FIX (verbessert)
-============================== */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+.about-section {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 40px;          /* gleichmäßiger Innenabstand */
-  background-color: var(--bg-color, transparent);
-  z-index: 50;
-  transition: background-color 0.3s;
-  box-sizing: border-box;      /* verhindert Überlauf */
+  gap: 40px;
+  margin-top: 40px;
 }
 
-header h1 {
-  margin: 0;
+.about-text {
+  flex: 2;
 }
 
-header h1 a {
-  color: inherit;
-  text-decoration: none;
-  font-size: 1em;
-  padding: 3px 8px;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-header h1 a:hover {
-  background-color: #ddd;
-}
-
-body.dark-mode header h1 a:hover {
-  background-color: #333;
-}
-
-/* --- Navigation rechts --- */
-#main-nav {
+.about-image {
+  flex: 1;
   display: flex;
-  align-items: center;
-  gap: 15px;
-  transition: transform 0.3s, opacity 0.3s;
+  justify-content: flex-end;
 }
 
-#main-nav.hidden {
-  transform: translateY(-100%);
-  opacity: 0;
+.about-image img {
+  width: 100%;
+  height: auto;
+  max-width: 350px;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
 }
 
-/* --- Dark/Light-Mode Button --- */
-button#toggle-darkmode {
-  padding: 6px 14px;
-  cursor: pointer;
-  border-radius: 6px;
-  border: none;
-  font-size: 0.9em;
-  background-color: #000;
-  color: #fff;
-  transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+.about-image img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-button#toggle-darkmode:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
-body.dark-mode button#toggle-darkmode {
-  background-color: #ddd;
-  color: #000;
-}
-
-body.dark-mode button#toggle-darkmode:hover {
-  background-color: #bbb;
+body.dark-mode .about-image img {
+  box-shadow: 0 4px 12px rgba(255,255,255,0.2);
 }
 
 /* ==============================
-   MOBILE / RESPONSIVE
+   Buttons / Responsive
 ============================== */
 @media (max-width: 700px) {
   header {
@@ -339,28 +307,37 @@ body.dark-mode button#toggle-darkmode:hover {
     padding: 5px 10px;
     font-size: 0.85em;
   }
+
+  .about-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-image {
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
+
 /* ==============================
-   DARK MODE HEADER FIX
+   Dark Mode Header Fix
 ============================== */
-
-/* Header-Hintergrund im Darkmode */
 body.dark-mode header {
-  background-color: #000; /* tiefschwarz */
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+  background-color: #000;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.1);
+  border-bottom: 1px solid #222;
 }
 
-/* Links und Titel heller machen */
 body.dark-mode header h1 a,
 body.dark-mode nav a {
-  color: #f0f0f0; /* helles Grau für Text */
+  color: #f0f0f0;
 }
 
 body.dark-mode nav a:hover {
-  color: #fff; /* volle Weißhelligkeit beim Hover */
+  color: #fff;
 }
 
-/* Darkmode-Button harmonisch absetzen */
 body.dark-mode button#toggle-darkmode {
   background-color: #111;
   color: #f8f8f8;
@@ -370,29 +347,3 @@ body.dark-mode button#toggle-darkmode {
 body.dark-mode button#toggle-darkmode:hover {
   background-color: #222;
 }
-
-/* Für mobile Ansicht: dezente Abtrennung unten */
-body.dark-mode header {
-  border-bottom: 1px solid #222;
-}
-
-.about-image img {
-  width: 100%;
-  height: auto;
-  max-width: 350px;         /* maximale Breite – du kannst 300–400 anpassen */
-  max-height: 80vh;         /* nie höher als 80% der Bildschirmhöhe */
-  object-fit: contain;      /* Bild bleibt vollständig sichtbar */
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: block;
-}
-
-.about-image img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .about-image img {
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-}
-
