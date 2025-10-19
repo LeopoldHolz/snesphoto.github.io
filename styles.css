@@ -39,6 +39,24 @@ button#toggle-darkmode {
   cursor: pointer;
 }
 
+header h1 a {
+  color: inherit;           /* passt sich Light/Dark Mode an */
+  text-decoration: none;    /* kein Unterstrich */
+  font-size: 1.8em;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header h1 a:hover {
+  background-color: #ddd;   /* heller Hover-Effekt im Light Mode */
+}
+
+body.dark-mode header h1 a:hover {
+  background-color: #333;   /* dunkler Hover-Effekt im Dark Mode */
+}
+
+
 /* ==============================
    Slideshow
 ============================== */
