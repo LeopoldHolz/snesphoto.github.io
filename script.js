@@ -39,6 +39,14 @@ function showSlide(index) {
   });
 }
 
+const toggleBtn = document.getElementById('toggle-darkmode');
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+}
+
+
 // Prüfen, ob Slides existieren
 if (slides.length > 0) {
   showSlide(slideIndex);
