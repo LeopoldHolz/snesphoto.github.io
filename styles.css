@@ -24,15 +24,17 @@ nav a {
   text-decoration: none;
 }
 
-.gallery {
+.gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
   padding: 20px;
 }
 
 .thumbnail {
   width: 100%;
+  height: 200px;         /* gleiche Höhe für alle Bilder */
+  object-fit: cover;     /* Bild wird zugeschnitten, um die Kachel zu füllen */
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s ease;
