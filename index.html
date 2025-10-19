@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1><a href="index.html">Snes' Foto-Stube</a></h1>
-     <nav id="main-nav">
+    <nav id="main-nav">
       <a href="index.html">Start</a>
       <a href="galerie.html">Galerie</a>
       <a href="about.html">Was ist das hier?</a>
@@ -19,47 +19,75 @@
   </header>
 
   <main>
-  <section class="slideshow">
-    <div class="slide active">
-      <img src="IMG_20250914_0009.jpg" alt="Bild 5">
-      <p class="slide-caption">Fujica 645, Kentmere 400</p>
-    </div>
-    <div class="slide">
-      <img src="bilder/IMG_20250928_0014.jpg" alt="Bild 4">
-      <p class="slide-caption">Bessa R2, ProImage 100</p>
-    </div>
-    <div class="slide">
-      <img src="bilder/IMG_20250928_0020.jpg" alt="Bild 3">
-      <p class="slide-caption">Bessa R2, ProImage 100</p>
-    </div>
-   <div class="slide">
-      <img src="bilder/5.jpg" alt="Bild 5">
-      <p class="slide-caption">Pentacon Six, Fuji Pro 400</p>
-    </div>
-   <div class="slide">
-      <img src="bilder/12.jpg" alt="Bild 12">
-      <p class="slide-caption">Fujica 645, ORWO NP20</p>
-    </div>
-   <div class="slide">
-      <img src="bilder/9.jpg" alt="Bild 9">
-      <p class="slide-caption">Leica ii, Fuji 400</p>
-    </div>
-   <div class="slide">
-      <img src="bilder/13.jpg" alt="Bild 13">
-      <p class="slide-caption">Leica M5, Ultramax 400</p>
-    </div>
-   <div class="slide">
-      <img src="bilder/14.jpg" alt="Bild 14">
-      <p class="slide-caption">Mamiya 645, HP5+</p>
-    </div>
-    <!-- Weitere Bilder -->
-    
-    <!-- Navigation -->
-    <span class="prev">&#10094;</span>
-    <span class="next">&#10095;</span>
-  </section>
-</main>
-  
-  <script src="script.js"></script>
+    <!-- Slideshow -->
+    <section class="slideshow">
+      <div class="slide active">
+        <img src="bilder/IMG_20250928_0014.jpg" alt="Bild 1">
+      </div>
+      <div class="slide">
+        <img src="bilder/IMG_20250928_0020.jpg" alt="Bild 2">
+      </div>
+      <div class="slide">
+        <img src="bilder/IMG_20250928_0021.jpg" alt="Bild 3">
+      </div>
+      <!-- weitere Slides hier -->
+      <span class="prev">&#10094;</span>
+      <span class="next">&#10095;</span>
+    </section>
+  </main>
+
+  <script>
+    // ==============================
+    // Dark Mode & Scroll Nav
+    // ==============================
+    const toggleBtn = document.getElementById('toggle-darkmode');
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+      });
+    }
+
+    let lastScrollTop = 0;
+    const nav = document.getElementById('main-nav');
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        let st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st > lastScrollTop && st > 50) {
+          nav.classList.add('hidden');
+        } else {
+          nav.classList.remove('hidden');
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
+      });
+    }
+
+    // ==============================
+    // Slideshow
+    // ==============================
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      if (!slides.length) return;
+      slides.forEach(slide => slide.classList.remove('active'));
+      slideIndex = (index + slides.length) % slides.length;
+      slides[slideIndex].classList.add('active');
+    }
+
+    function nextSlide() { showSlide(slideIndex + 1); }
+    function prevSlide() { showSlide(slideIndex - 1); }
+
+    showSlide(slideIndex);
+
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+  </script>
 </body>
 </html>
