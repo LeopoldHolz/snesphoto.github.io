@@ -283,3 +283,16 @@ section h2 { margin-top: 0; }
 
   main { padding:15px; margin-top:80px; }
 }
+
+/* Slideshow Captions dynamische Größe */
+.slide-caption {
+  font-size: clamp(1.5em, 4vw, 4em); /* Minimum 1.5em, Maximum 4em, dynamisch je nach Bildschirmbreite */
+  color: #444;
+  text-align: center;
+  margin-top: 10px;
+}
+
+body.dark-mode .slide-caption {
+  color: #ccc;
+}
+
