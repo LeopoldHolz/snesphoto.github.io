@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Meine Galerie</h1>
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="about.html">Über mich</a>
+      <button id="toggle-darkmode">Dark Mode an/aus</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <h2>Bildergalerie</h2>
+      <div class="gallery-grid">
+        <img src="bilder/bild1.jpg" alt="Bild 1" class="thumbnail">
+        <img src="bilder/bild2.jpg" alt="Bild 2" class="thumbnail">
+        <img src="bilder/bild3.jpg" alt="Bild 3" class="thumbnail">
+        <img src="bilder/bild4.jpg" alt="Bild 4" class="thumbnail">
+        <img src="bilder/bild5.jpg" alt="Bild 5" class="thumbnail">
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="hidden">
+      <span id="close">&times;</span>
+      <img id="lightbox-img" src="" alt="">
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
