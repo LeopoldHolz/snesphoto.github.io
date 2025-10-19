@@ -35,17 +35,19 @@ function showSlide(index) {
   });
 }
 
-if (prev && next && slides.length > 0) {
+// Prüfen, ob Slides existieren
+if (slides.length > 0) {
   showSlide(slideIndex);
 
-  prev.addEventListener('click', () => {
-    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-    showSlide(slideIndex);
-  });
+  if (prev && next) {
+    prev.addEventListener('click', () => {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    });
 
-  next.addEventListener('click', () => {
-    slideIndex = (slideIndex + 1) % slides.length;
-    showSlide(slideIndex);
-  });
+    next.addEventListener('click', () => {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    });
+  }
 }
-
