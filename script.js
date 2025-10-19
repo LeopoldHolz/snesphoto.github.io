@@ -23,10 +23,8 @@ if (nav) {
   window.addEventListener('scroll', () => {
     let st = window.pageYOffset || document.documentElement.scrollTop;
     if (st > lastScrollTop && st > 50) {
-      // Scroll nach unten → nav verstecken
       nav.classList.add('hidden');
     } else {
-      // Scroll nach oben → nav anzeigen
       nav.classList.remove('hidden');
     }
     lastScrollTop = st <= 0 ? 0 : st;
@@ -60,21 +58,31 @@ if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
 // ==============================
-// Galerie / Lightbox
+// Galerie / Lightbox mit Preload
 // ==============================
 const thumbnails = document.querySelectorAll('.thumbnail');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const closeBtn = document.getElementById('close');
 
+// Große Bilder vorab laden
+thumbnails.forEach(thumb => {
+  const fullSrc = thumb.dataset.full || thumb.src;
+  const img = new Image();
+  img.src = fullSrc; // Preload im Hintergrund
+});
+
+// Lightbox öffnen
 thumbnails.forEach(thumb => {
   thumb.addEventListener('click', () => {
     if (!lightbox || !lightboxImg) return;
+    const fullSrc = thumb.dataset.full || thumb.src;
+    lightboxImg.src = fullSrc;
     lightbox.classList.remove('hidden');
-    lightboxImg.src = thumb.src;
   });
 });
 
+// Lightbox schließen
 if (lightbox) {
   lightbox.addEventListener('click', e => {
     if (e.target === lightbox || e.target === closeBtn) {
