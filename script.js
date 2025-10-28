@@ -79,28 +79,29 @@ if (lightbox) {
 }
 
 // ==============================
-// Sprachumschaltung
+// Sprachumschaltung (robust für lokale Tests und GitHub Pages)
 // ==============================
 const langBtn = document.getElementById('toggle-lang');
 if (langBtn) {
   langBtn.addEventListener('click', () => {
-    // Aktuelle Sprache aus localStorage oder Standard 'de'
-    const currentLang = localStorage.getItem('lang') || 'de';
+    console.log("Language button clicked!"); // Testausgabe
 
-    // Neue Sprache bestimmen
+    const currentLang = localStorage.getItem('lang') || 'de';
     const newLang = currentLang === 'de' ? 'en' : 'de';
     localStorage.setItem('lang', newLang);
 
-    // Aktuellen Dateinamen ermitteln (z. B. 'index.html')
-    const currentPage = window.location.pathname.split('/').pop();
+    // Robustere Variante: funktioniert mit file:// und GitHub Pages
+    const url = window.location.href;
+    const file = url.substring(url.lastIndexOf('/') + 1) || 'index.html';
 
-    // Basisnamen ohne '_en' und '.html' herausfiltern
-    const base = currentPage.replace(/_en\.html$/, '').replace(/\.html$/, '');
+    // Basisnamen ohne _en und .html
+    const base = file.replace(/_en\.html$/, '').replace(/\.html$/, '');
 
-    // Zielseite bestimmen
+    // Zielseite
     const targetPage = newLang === 'en' ? `${base}_en.html` : `${base}.html`;
 
-    // Weiterleitung ausführen
+    console.log(`Switching language: ${file} → ${targetPage}`);
     window.location.href = targetPage;
   });
 }
+
