@@ -77,3 +77,22 @@ if (lightbox) {
     }
   });
 }
+
+// ==============================
+// Sprachumschaltung
+// ==============================
+const langBtn = document.getElementById('toggle-lang');
+if (langBtn) {
+  langBtn.addEventListener('click', () => {
+    const currentLang = localStorage.getItem('lang') || 'de';
+    const newLang = currentLang === 'de' ? 'en' : 'de';
+    localStorage.setItem('lang', newLang);
+
+    // einfache Weiterleitung
+    const currentPage = window.location.pathname.split('/').pop();
+    const base = currentPage.replace(/_en\.html$/, '').replace(/\.html$/, '');
+    const targetPage = newLang === 'en' ? `${base}_en.html` : `${base}.html`;
+    window.location.href = targetPage;
+  });
+}
+
