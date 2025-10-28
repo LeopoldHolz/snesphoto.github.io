@@ -84,15 +84,23 @@ if (lightbox) {
 const langBtn = document.getElementById('toggle-lang');
 if (langBtn) {
   langBtn.addEventListener('click', () => {
+    // Aktuelle Sprache aus localStorage oder Standard 'de'
     const currentLang = localStorage.getItem('lang') || 'de';
+
+    // Neue Sprache bestimmen
     const newLang = currentLang === 'de' ? 'en' : 'de';
     localStorage.setItem('lang', newLang);
 
-    // einfache Weiterleitung
+    // Aktuellen Dateinamen ermitteln (z. B. 'index.html')
     const currentPage = window.location.pathname.split('/').pop();
+
+    // Basisnamen ohne '_en' und '.html' herausfiltern
     const base = currentPage.replace(/_en\.html$/, '').replace(/\.html$/, '');
+
+    // Zielseite bestimmen
     const targetPage = newLang === 'en' ? `${base}_en.html` : `${base}.html`;
+
+    // Weiterleitung ausführen
     window.location.href = targetPage;
   });
 }
-
