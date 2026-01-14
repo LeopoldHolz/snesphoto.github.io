@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - Snes' Photo Corner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1><a href="index.html">Snes' Photo Corner</a></h1>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="galerie.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="kontakt_en.html" class="active">Contact</a>
+      <a href="impressum.html">Legal Notice</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact">
+      <h2>Contact</h2>
+      <p>For inquiries, feedback, or questions about photography, feel free to send me a message:</p>
+
+      <!-- E-Mail with spam protection -->
+      <p>Email: <span id="email">leopold[at]holz[dot]gmx[dot]de</span></p>
+      <button onclick="copyEmail()" class="copy-btn">Copy Email</button>
+
+      <!-- Direct link -->
+      <a href="mailto:leopold.holz@gmx.de" class="email-link">Open Email Client</a>
+
+      <!-- Social Media -->
+      <div class="social-links">
+        <p>Or follow me on:</p>
+        <a href="https://www.instagram.com/deinbenutzername" target="_blank">Instagram</a>
+        <a href="https://www.flickr.com/photos/deinbenutzername" target="_blank">Flickr</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <!-- JavaScript for email spam protection -->
+  <script>
+    function copyEmail() {
+      const email = "leopold.holz@gmx.de";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied: " + email);
+      });
+    }
+  </script>
+</body>
+</html>

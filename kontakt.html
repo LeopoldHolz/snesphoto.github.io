@@ -2,7 +2,6 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kontakt - Snes' Foto-Stube</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,24 +12,41 @@
       <a href="index.html">Start</a>
       <a href="galerie.html">Galerie</a>
       <a href="about.html">Was ist das hier?</a>
-      <a href="kontakt.html">Kontakt</a> <!-- Aktiver Reiter -->
+      <a href="kontakt.html" class="active">Kontakt</a>
       <a href="impressum.html">Impressum</a>
-      <button id="toggle-darkmode">Dark Mode an/aus</button>
-      <button id="toggle-lang">EN/DE</button>
     </nav>
   </header>
 
   <main>
     <section class="contact">
-  <h2>Kontakt</h2>
-  <p>Schreib mir gerne eine E-Mail:</p>
-  <a href="mailto:leopold.holz@gmx.de" class="email-link">
-    leopold.holz@gmx.de
-  </a>
-</section>
+      <h2>Kontakt</h2>
+      <p>Für Anfragen, Feedback oder Fragen zur Fotografie schreib mir gerne eine Nachricht:</p>
 
+      <!-- E-Mail mit Spam-Schutz (JavaScript-Obscuring) -->
+      <p>E-Mail: <span id="email">leopold[at]holz[dot]gmx[dot]de</span></p>
+      <button onclick="copyEmail()" class="copy-btn">E-Mail kopieren</button>
+
+      <!-- Alternative: Direkter Link (für Nutzer mit deaktiviertem JS) -->
+      <a href="mailto:leopold.holz@gmx.de" class="email-link">Direkt E-Mail öffnen</a>
+
+      <!-- Social Media (optional) -->
+      <div class="social-links">
+        <p>Oder folge mir auf:</p>
+        <a href="https://www.instagram.com/deinbenutzername" target="_blank">Instagram</a>
+        <a href="https://www.flickr.com/photos/deinbenutzername" target="_blank">Flickr</a>
+      </div>
+    </section>
   </main>
 
   <script src="script.js"></script>
+  <!-- JavaScript für E-Mail-Spam-Schutz -->
+  <script>
+    function copyEmail() {
+      const email = "leopold.holz@gmx.de";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("E-Mail-Adresse kopiert: " + email);
+      });
+    }
+  </script>
 </body>
 </html>
