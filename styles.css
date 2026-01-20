@@ -324,3 +324,15 @@ body.dark-mode .slide-caption {
   }
 }
 
+.blog-post {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+}
+
+.blog-post img {
+  max-width: 100%;
+  height: auto;
+}
+
+
