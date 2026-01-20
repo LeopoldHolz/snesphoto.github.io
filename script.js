@@ -1,16 +1,26 @@
 // ==============================
 // Dark Mode Toggle & Merken
 // ==============================
-const toggleBtn = document.getElementById('toggle-darkmode');
-if (localStorage.getItem('darkMode') === 'true') {
-  document.body.classList.add('dark-mode');
-}
-if (toggleBtn) {
-  toggleBtn.addEventListener('click', () => {
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleBtn = document.getElementById('toggle-darkmode');
+
+  // Remove any existing event listeners
+  const oldToggle = toggleBtn?.cloneNode(true);
+  if (toggleBtn && oldToggle) {
+    toggleBtn.parentNode.replaceChild(oldToggle, toggleBtn);
+  }
+
+  // Add single implementation
+  oldToggle?.addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
   });
-}
+
+  // Apply saved state
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+  }
+});
 
 // ==============================
 // Scroll-Nav ausblenden
