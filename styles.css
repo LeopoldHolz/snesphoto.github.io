@@ -324,19 +324,22 @@ body.dark-mode .slide-caption {
   }
 }
 
-/* Base blog post styling */
+/* Blog post container - minimal styling that won't conflict */
 .blog-post {
   margin-bottom: 2rem;
   padding: 1rem;
-  background-color: #ffffff; /* Light mode */
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 4px;
 }
 
-.dark-mode .blog-post {
-  background-color: #2a2a2a;
-  color: #e0e0e0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+/* Expandable content */
+.blog-post-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.blog-post.expanded .blog-post-content {
+  max-height: 1000px;
 }
 
 /* Header styling */
@@ -345,45 +348,10 @@ body.dark-mode .slide-caption {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #ddd; /* Light mode */
-}
-
-.dark-mode .blog-post-header {
-  border-bottom-color: #444;
-}
-
-/* Content area */
-.blog-post-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out, padding 0.3s ease;
-  padding-top: 1rem;
-}
-
-.dark-mode .blog-post-content {
-  color: #e0e0e0; /* Ensure text is readable in dark mode */
 }
 
 /* Image styling */
 .blog-post-image {
   max-width: 30%;
   height: auto;
-  margin-top: 1rem;
-  border-radius: 4px;
-}
-
-/* Post body text */
-.post-body {
-  margin-top: 1rem;
-  line-height: 1.6;
-}
-
-/* Expand icon */
-.expand-icon {
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.dark-mode .expand-icon {
-  color: #bb86fc; /* Nice purple for dark mode */
 }

@@ -110,29 +110,22 @@ function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
 }
 
-// Blog post expansion
-function toggleBlogPost(header) {
-  const post = header.parentElement;
-  post.classList.toggle('expanded');
+// Only add if the function doesn't already exist
+if (typeof toggleBlogPost !== 'function') {
+  function toggleBlogPost(header) {
+    const post = header.parentElement;
+    post.classList.toggle('expanded');
+  }
 }
 
-// Initialize dark mode if saved in localStorage
-document.addEventListener('DOMContentLoaded', () => {
-  const darkMode = localStorage.getItem('darkMode');
-  if (darkMode === 'enabled') {
-    document.body.classList.add('dark-mode');
-  }
-
-  // Set up dark mode toggle button
-  const toggleBtn = document.getElementById('toggle-darkmode');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      toggleDarkMode();
-      localStorage.setItem(
-        'darkMode',
-        document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'
-      );
+// Ensure dark mode toggle still works
+document.addEventListener('DOMContentLoaded', function() {
+  const darkModeToggle = document.getElementById('toggle-darkmode');
+  if (darkModeToggle && !darkModeToggle.dataset.initialized) {
+    darkModeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
     });
+    darkModeToggle.dataset.initialized = true;
   }
 });
 
