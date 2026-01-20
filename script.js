@@ -111,14 +111,3 @@ if (typeof toggleBlogPost !== 'function') {
     post.classList.toggle('expanded');
   }
 }
-
-// Ensure dark mode toggle still works
-document.addEventListener('DOMContentLoaded', function() {
-  const darkModeToggle = document.getElementById('toggle-darkmode');
-  if (darkModeToggle && !darkModeToggle.dataset.initialized) {
-    darkModeToggle.addEventListener('click', function() {
-      document.body.classList.toggle('dark-mode');
-    });
-    darkModeToggle.dataset.initialized = true;
-  }
-});
