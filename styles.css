@@ -355,3 +355,53 @@ body.dark-mode .slide-caption {
   max-width: 30%;
   height: auto;
 }
+
+/* Blog entry styling */
+details {
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+summary {
+  padding: 0.5rem 1rem;
+  background-color: #f4f4f4; /* Light mode */
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+details[open] summary {
+  background-color: #e0e0e0; /* Darker when open */
+}
+
+.dark-mode summary {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+.dark-mode details[open] summary {
+  background-color: #4a4a4a;
+}
+
+/* Content inside details */
+details > * {
+  padding: 0 1rem;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode header {
+  background-color: #1e1e1e;
+}
+
+.dark-mode nav a, .dark-mode button {
+  color: #bb86fc;
+}
+
+.dark-mode main {
+  background-color: #1e1e1e;
+}
+
