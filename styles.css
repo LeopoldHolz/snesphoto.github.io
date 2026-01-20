@@ -364,7 +364,7 @@ body.dark-mode .slide-caption {
 }
 
 .blog-post-image {
-  max-width: 100%;
+  max-width: 30%;
   height: auto;
   margin-top: 1rem;
 }
