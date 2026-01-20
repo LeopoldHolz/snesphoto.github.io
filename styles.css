@@ -328,11 +328,54 @@ body.dark-mode .slide-caption {
   margin-bottom: 2rem;
   padding: 1rem;
   border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-.blog-post img {
+.blog-post.expanded {
+  padding-bottom: 2rem; /* Extra space when expanded */
+}
+
+.blog-post-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-post-title {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.post-date {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.blog-post-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.blog-post.expanded .blog-post-content {
+  max-height: 1000px; /* Adjust based on your content */
+}
+
+.blog-post-image {
   max-width: 100%;
   height: auto;
+  margin-top: 1rem;
+}
+
+/* Dark mode compatibility */
+.dark-mode .blog-post {
+  border-color: #444;
+}
+
+.dark-mode .post-date {
+  color: #aaa;
 }
 
 

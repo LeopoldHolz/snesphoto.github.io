@@ -105,3 +105,25 @@ if (langBtn) {
   });
 }
 
+function toggleBlogPost(header) {
+  const post = header.parentElement;
+  post.classList.toggle('expanded');
+
+  // Rotate the expand icon
+  const icon = header.querySelector('.expand-icon');
+  if (post.classList.contains('expanded')) {
+    icon.textContent = '▼';
+  } else {
+    icon.textContent = '▶';
+  }
+}
+
+// Ensure dark mode compatibility
+document.addEventListener('DOMContentLoaded', function() {
+  const darkModeToggle = document.getElementById('toggle-darkmode');
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+    });
+  }
+});
