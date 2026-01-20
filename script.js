@@ -117,13 +117,3 @@ function toggleBlogPost(header) {
     icon.textContent = '▶';
   }
 }
-
-// Ensure dark mode compatibility
-document.addEventListener('DOMContentLoaded', function() {
-  const darkModeToggle = document.getElementById('toggle-darkmode');
-  if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', function() {
-      document.body.classList.toggle('dark-mode');
-    });
-  }
-});
