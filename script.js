@@ -87,6 +87,76 @@ if (lightbox) {
     }
   });
 }
+ // ==============================
+    // Galerie + automatische Thumbnails
+    // ==============================
+    const bilder = [
+      "bilder/IMG_20250928_0014.jpg",
+      "bilder/IMG_20250928_0020.jpg",
+      "bilder/IMG_20250928_0021.jpg",
+      "bilder/IMG_20250928_0022.jpg",
+      "bilder/5.jpg",
+      "bilder/6.jpg",
+      "bilder/7.jpg",
+      "bilder/8.jpg",
+      "bilder/9.jpg",
+      "bilder/10.jpg",
+      "bilder/11.jpg",
+      "bilder/12.jpg",
+      "bilder/13.jpg",
+      "bilder/14.jpg",
+      "bilder/15.jpg",
+      "bilder/16.jpg",
+      "bilder/17.jpg",
+      "bilder/18.jpg",
+      "bilder/19.jpg",
+      "bilder/20.jpg",
+      "bilder/21.jpg",
+      "bilder/23.jpg",
+      "bilder/24.jpg",
+      "bilder/25.jpg",
+      "bilder/26.jpg",
+      "bilder/27.jpg",
+      "bilder/28.jpg",
+      "bilder/29.jpg"
+    ];
+
+    // Thumbnails erstellen
+    bilder.forEach(src => {
+      const img = document.createElement('img');
+      img.classList.add('thumbnail');
+      img.src = src;         // Browser skaliert die Vorschau automatisch
+      img.dataset.full = src; // Originalbild für Lightbox
+      img.alt = src.split('/').pop();
+      galleryGrid.appendChild(img);
+
+      img.addEventListener('click', () => {
+        lightbox.classList.remove('hidden');
+        lightboxImg.src = img.dataset.full;
+      });
+    });
+
+    // Lightbox schließen
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox || e.target === closeBtn) {
+        lightbox.classList.add('hidden');
+      }
+    });
+
+    // ==============================
+    // Dark Mode Toggle & Scroll Nav
+    // ==============================
+   /*  const toggleBtn = document.getElementById('toggle-darkmode');
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+      });
+    } */
 
 // ==============================
 // Sprachumschaltung (robust für lokale Tests und GitHub Pages)
@@ -121,3 +191,7 @@ if (typeof toggleBlogPost !== 'function') {
     post.classList.toggle('expanded');
   }
 }
+
+
+
+
