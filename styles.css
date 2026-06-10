@@ -346,7 +346,7 @@ body.dark-mode .slide-caption {
 }
 
 .blog-post.expanded .blog-post-content {
-  max-height: 1000px; /* Adjust based on your content */
+  max-height: 5000px; /* Adjust based on your content */
 }
 
 /* Image styling (only shown when expanded) */
